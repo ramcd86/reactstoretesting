@@ -1,26 +1,71 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import db from './db';
 import './App.css';
+import './styles/index.scss';
+import 'font-awesome/css/font-awesome.min.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import NavbarComponent from './components/navbar';
+import JumbotronComponent from './components/jumbotron';
+
+
+class App extends Component {
+
+  constructor() {
+    super();
+    this.state = {
+      db: db,
+      order: {},
+      initState: 'Null',
+      inputReturn: 'No input returned',
+      updateCounter: 0
+    }
+
+    this.childHandler = this.childHandler.bind(this);
+    this.formHandler = this.formHandler.bind(this);
+  }
+
+  componentDidMount() {
+    console.log(this.state.db)
+  }
+
+  componentDidUpdate() {
+  }
+
+  shouldComponentUpdate() {
+  }
+
+  stateUpdater = () => {
+    this.setState({
+      updateCounter: (this.state.updateCounter + 1)
+    })
+  }
+
+  buttonMethod = () => {
+    this.setState({
+      initState: 'Not null'
+    })
+  }
+
+  childHandler = (bubbledData) => {
+    this.setState({
+      initState: bubbledData
+    })
+  }
+
+  formHandler = (incomingFormData) => {
+    this.setState({
+      inputReturn: incomingFormData
+    })
+  }
+
+  render() {
+    return (
+      <div className="container-fluid">
+        <NavbarComponent/>
+        <JumbotronComponent/>
+      </div>
+    )
+  }
 }
 
 export default App;

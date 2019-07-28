@@ -1,0 +1,38 @@
+$bumblebee : #FDB218;
+
+.jumbotron {
+    background-image: url('./../assets/test2.jpeg');
+    background-size: cover;
+    min-height: 500px;
+    width: 100vw;
+    h1 {
+        text-align: center;
+        color: white;
+        font-size: 4rem;
+        display: block;
+        padding-top: 200px;
+    }
+}
+
+.subheader {
+    p {
+        color: #000;
+        font-size: 1.2rem;
+        font-weight: 300;
+        display: block;
+        text-align: center;
+        padding-bottom: 30px;
+        width: 100%;
+        border-bottom: 1px solid rgb(133, 133, 133);
+        margin: {
+            top: 30px;
+            bottom: 40px;
+        }
+        i {
+            color: $bumblebee;
+            font-size: 3rem;
+            display: block;
+            margin-bottom: 10px;
+        }
+    }
+}
