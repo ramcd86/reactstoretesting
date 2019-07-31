@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import JumbotronComponent from './../components/jumbotron.js';
 
 class HomeComponent extends Component {
 
@@ -8,7 +9,8 @@ class HomeComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div className="container-fluid">
+            <JumbotronComponent/>
                 Home.
                 {this.props.state.initState}
 

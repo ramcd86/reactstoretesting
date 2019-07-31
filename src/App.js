@@ -57,25 +57,33 @@ class App extends Component {
     return (
       <Router>
         <div>
-        
-        <button onClick={this.buttonMethod}>butaone</button>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/shirts">Shirts</Link>
-            </li>
-            <li>
-              <Link to="/shoes">Shoes</Link>
-            </li>
-            <li>
-              <Link to="/contact">Contact Us</Link>
-            </li>
-            <li>
-              <Link to="/about">About Us</Link>
-            </li>
-          </ul>
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+            <div className="container">
+              <span className="navbar-brand" href="#"><i className="fa fa-dot-circle-o" aria-hidden="true"></i> ICON</span>
+              <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+                  <span className="navbar-toggler-icon"></span>
+              </button>
+              <div className="collapse navbar-collapse" id="navbarColor01">
+                  <ul className="navbar-nav mr-auto">
+                    <li className="nav-item active">
+                      <Link className="nav-link" to="/">Home</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/shirts">Shirts</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/shoes">Shoes</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/contact">Contact Us</Link>
+                    </li>
+                    <li className="nav-item">
+                      <Link className="nav-link" to="/about">About Us</Link>
+                    </li>
+                  </ul>
+              </div>
+            </div>
+        </nav>
           <Route exact path="/" 
           render={ (routeProps) => (<HomeComponent {...routeProps} state={this.state} stateMutator={this.stateMutator} />) }/>
           
