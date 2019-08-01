@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 
 class AboutComponent extends Component {
 
+    constructor(props) {
+        super();
+    }
 
     render() {
         return (

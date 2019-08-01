@@ -5,7 +5,10 @@ class HomeComponent extends Component {
 
     constructor(props) {
         super();
+        console.log(this.props);
     }
+
+
 
     render() {
         return (

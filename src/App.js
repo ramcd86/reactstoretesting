@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
 import axios from 'axios';
 
+
 import './App.css';
 import './styles/index.scss';
 import 'font-awesome/css/font-awesome.min.css';
@@ -69,6 +70,7 @@ class App extends Component {
       default:
       return null;
     }
+    console.log(this.state)
   }
 
   componentDidUpdate() {
@@ -111,7 +113,7 @@ class App extends Component {
           render={ (routeProps) => (<HomeComponent {...routeProps} state={this.state} stateMutator={this.stateMutator} />) }/>
           
           <Route path="/shirts" 
-          render={ (routeProps) => (<ShirtsComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
+          render={ (routerProps) => (<ShirtsComponent {...routerProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
 
           <Route path="/shoes" 
           render={ (routeProps) => (<ShoesComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
