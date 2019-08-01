@@ -5,13 +5,18 @@ class ShirtsComponent extends Component {
     constructor(props) {
         super();
         // console.log(this.props);
-        this.shirtNames = '';
+        this.state = {
+            shirts: ''
+        }
     }
 
     componentDidUpdate(){
-        console.log('this.props.state', this.props.state);
-        if (this.props.state) {
-            this.shirtNames = this.props.state.shirts.forEach(shirt => (
+       
+
+        let shirtNames; 
+
+        if (this.props.state & this.state.shirts === '') {
+            shirtNames = this.props.state.shirts.forEach(shirt => (
                 <div className="col-12">
                     <div className="row">
                         <div className="col-6">{shirt.shirtName}</div>
@@ -19,7 +24,13 @@ class ShirtsComponent extends Component {
                     </div>
                 </div>
             ));
+            this.setState({
+                shirts: shirtNames
+            })
+            console.log('this.props.state', shirtNames);
         }
+
+
     }
 
     render() {
@@ -32,7 +43,7 @@ class ShirtsComponent extends Component {
         return (
             <div className="container mt-5">
                 <div className="row">
-                    {this.shirtNames}
+                    {this.state.shirts}
                 </div>
             </div>
         )
