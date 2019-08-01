@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import db from './mock/db';
+import axios from 'axios';
+
 import './App.css';
 import './styles/index.scss';
 import 'font-awesome/css/font-awesome.min.css';
 
-import NavbarComponent from './components/navbar';
-import JumbotronComponent from './components/jumbotron';
 
 import ShoesComponent from './pages/shoes';
 import ShirtsComponent from './pages/shirts';
@@ -20,7 +19,8 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      db: db,
+      shirts: null,
+      shoes: null,
       order: {},
       initState: 'Null',
       inputReturn: 'No input returned',
@@ -29,10 +29,23 @@ class App extends Component {
     }
 
     this.stateMutator = this.stateMutator.bind(this);
+
+    axios.get('http://localhost:3000/shirts').then((resp) => {
+      this.stateMutator({actionType: 'SET_SHIRTS', payload: resp.data})
+    }).catch((err) => {
+      console.log(err)
+    })
+
+    axios.get('http://localhost:3000/shoes').then((resp) => {
+      this.stateMutator({actionType: 'SET_SHOES', payload: resp.data})
+    }).catch((err) => {
+      console.log(err)
+    })
+
   }
 
   componentDidMount() {
-    console.log(this.state.db)
+
   }
 
 
@@ -41,6 +54,16 @@ class App extends Component {
       case 'DEFAULT':
         this.setState({
           initState: action.payload
+        })
+      break;
+      case 'SET_SHIRTS': 
+        this.setState({
+          shirts: action.payload
+        })
+      break;
+      case 'SET_SHOES': 
+        this.setState({
+          shoes: action.payload
         })
       break;
       default:
@@ -88,16 +111,16 @@ class App extends Component {
           render={ (routeProps) => (<HomeComponent {...routeProps} state={this.state} stateMutator={this.stateMutator} />) }/>
           
           <Route path="/shirts" 
-          render={ (routeProps) => (<ShirtsComponent {...routeProps} state={this.state} />) }/>
+          render={ (routeProps) => (<ShirtsComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
 
           <Route path="/shoes" 
-          render={ (routeProps) => (<ShoesComponent {...routeProps} state={this.state} />) }/>
+          render={ (routeProps) => (<ShoesComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
 
           <Route path="/contact" 
-          render={ (routeProps) => (<ContactComponent {...routeProps} state={this.state} />) }/>
+          render={ (routeProps) => (<ContactComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
 
           <Route path="/about" 
-          render={ (routeProps) => (<AboutComponent {...routeProps} state={this.state} />) }/>
+          render={ (routeProps) => (<AboutComponent {...routeProps} state={this.state} stateMutator={this.stateMutator}  />) }/>
 
         </div>
     </Router>
