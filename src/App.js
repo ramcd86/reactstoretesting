@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route, Link, BrowserRouter as Router } from 'react-router-dom';
-import db from './db';
+import db from './mock/db';
 import './App.css';
 import './styles/index.scss';
 import 'font-awesome/css/font-awesome.min.css';
